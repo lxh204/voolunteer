@@ -1,7 +1,4 @@
-/* * 外部资源标注：
- * Google Fonts (Roboto 字体) - 用于提升字体美观度
- * 如果无法访问外网，可以删除下面这行 @import，系统将回退到默认字体。
- */
+/* * 外部资源标注：Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 /* 全局重置 */
@@ -12,13 +9,29 @@
 }
 
 body {
-    /* 页面背景色 */
-    background-color: #f4f7f6;
+    /* --- 志愿者主题背景图 (团结互助) --- */
+    /* 这张图展示了多人手叠在一起，象征团队合作和志愿精神 */
+    background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+
+    /* 核心背景设置：确保铺满、不重复、固定不动 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* --- 加一层半透明遮罩 (推荐) --- */
+    /* 这行代码会在图片上盖一层淡淡的深色，让白色的登录框更显眼，防止背景太花看不清字 */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat fixed center;
+    background-size: cover;
+
+    /* 核心布局 (保持不变) */
     font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
     color: #333;
 }
 
@@ -152,126 +165,45 @@ h2 {
     text-decoration: underline;
 }
 
-/* 响应式设计 - 适用于移动设备 */
+/* 响应式设计 - 保持原样 */
 @media (max-width: 768px) {
-    /* 调整卡片容器大小 */
-    .auth-container {
-        width: 90%;
-        max-width: 350px;
-        padding: 20px;
-    }
-
-    /* 调整标题大小 */
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    /* 调整表单组间距 */
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    /* 调整输入框大小 */
-    .form-control {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-
-    /* 调整按钮大小 */
-    .btn {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    /* 调整验证码区域布局 */
-    .form-group label {
-        font-size: 13px;
-    }
-
-    /* 调整验证码图片大小 */
-    #captchaImg {
-        height: 35px;
-    }
-
-    /* 调整底部链接样式 */
-    .auth-footer {
-        font-size: 13px;
-    }
+    .auth-container { width: 90%; max-width: 350px; padding: 20px; }
+    h2 { font-size: 1.5rem; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-control { padding: 10px 12px; font-size: 14px; }
+    .btn { padding: 10px; font-size: 14px; }
+    .form-group label { font-size: 13px; }
+    #captchaImg { height: 35px; }
+    .auth-footer { font-size: 13px; }
 }
 
-/* 响应式设计 - 适用于平板设备 */
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* 调整卡片容器大小 */
-    .auth-container {
-        width: 80%;
-        max-width: 400px;
-        padding: 25px;
-    }
-
-    /* 调整标题大小 */
-    h2 {
-        font-size: 1.7rem;
-        margin-bottom: 25px;
-    }
-
-    /* 调整输入框大小 */
-    .form-control {
-        padding: 12px 15px;
-        font-size: 14px;
-    }
-
-    /* 调整按钮大小 */
-    .btn {
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    /* 调整验证码图片大小 */
-    #captchaImg {
-        height: 40px;
-    }
-
-    /* 调整底部链接样式 */
-    .auth-footer {
-        font-size: 14px;
-    }
+    .auth-container { width: 80%; max-width: 400px; padding: 25px; }
+    h2 { font-size: 1.7rem; margin-bottom: 25px; }
+    .form-control { padding: 12px 15px; font-size: 14px; }
+    .btn { padding: 12px; font-size: 16px; }
+    #captchaImg { height: 40px; }
+    .auth-footer { font-size: 14px; }
 }
 
-/* 响应式设计 - 适用于桌面设备 */
 @media (min-width: 1025px) {
-    /* 保持原有设计 */
-    .auth-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 40px;
-    }
+    .auth-container { width: 100%; max-width: 400px; padding: 40px; }
+    h2 { font-size: 2rem; margin-bottom: 30px; }
+    .form-control { padding: 12px 15px; font-size: 14px; }
+    .btn { padding: 12px; font-size: 16px; }
+    #captchaImg { height: 40px; }
+    .auth-footer { font-size: 14px; }
+}
 
-    /* 保持原有标题大小 */
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
+/* --- 修改点：错误提示样式 --- */
+.error-message {
+    color: #e74c3c;      /* 红色文字 */
+    font-size: 12px;
+    margin-bottom: 5px;  /* 关键修改：因为在输入框上方，所以需要底部间距 */
+    font-weight: bold;
+    display: none;       /* 默认隐藏 */
+}
 
-    /* 保持原有输入框大小 */
-    .form-control {
-        padding: 12px 15px;
-        font-size: 14px;
-    }
-
-    /* 保持原有按钮大小 */
-    .btn {
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    /* 保持原有验证码图片大小 */
-    #captchaImg {
-        height: 40px;
-    }
-
-    /* 保持原有底部链接样式 */
-    .auth-footer {
-        font-size: 14px;
-    }
+.form-group.error .form-control {
+    border-color: #e74c3c;
 }

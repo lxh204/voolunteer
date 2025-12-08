@@ -5,46 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户注册</title>
-    <%-- 引入外部CSS文件 --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Login-Regis/LandR.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Login-Regis/LandR.css?v=<%= System.currentTimeMillis() %>">
 </head>
 <body>
 
 <div class="auth-container">
     <h2>创建新账号</h2>
 
-    <%-- 错误信息 --%>
     <% if (request.getAttribute("errorMessage") != null) { %>
-    <div class="alert alert-error"><%= request.getAttribute("errorMessage") %></div>
+    <div class="alert alert-error" style="color: red;"><%= request.getAttribute("errorMessage") %></div>
     <% } %>
 
-    <form action="${pageContext.request.contextPath}/RegisterController" method="post">
+    <form action="${pageContext.request.contextPath}/RegisterController" method="post" novalidate>
+
         <div class="form-group">
             <label for="username">用户名</label>
-            <input type="text" name="username" id="username" class="form-control" required>
+            <div id="usernameError" class="error-message" style="color: red; display: none;"></div>
+            <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名">
         </div>
 
         <div class="form-group">
             <label for="password">密码</label>
-            <input type="password" name="password" id="password" class="form-control" required>
+            <div id="passwordError" class="error-message" style="color: red; display: none;"></div>
+            <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码">
         </div>
 
         <div class="form-group">
             <label for="email">邮箱</label>
-            <input type="email" name="email" id="email" class="form-control">
+            <div id="emailError" class="error-message" style="color: red; display: none;"></div>
+            <input type="email" name="email" id="email" class="form-control" placeholder="请输入邮箱">
         </div>
 
         <div class="form-group">
             <label for="captcha">验证码</label>
+            <div id="captchaError" class="error-message" style="color: red; display: none;"></div>
             <div style="display: flex; gap: 10px;">
-                <input type="text" name="captcha" id="captcha" class="form-control" placeholder="请输入验证码" required style="flex: 1;">
+                <input type="text" name="captcha" id="captcha" class="form-control" placeholder="请输入验证码" style="flex: 1;">
                 <img src="${pageContext.request.contextPath}/captcha" id="captchaImg" alt="验证码" style="height: 40px; cursor: pointer;" onclick="refreshCaptcha()" title="点击刷新验证码">
             </div>
         </div>
 
         <button type="submit" class="btn btn-primary">注 册</button>
 
-        <%-- 返回按钮，使用 type="button" 防止触发表单提交 --%>
         <button type="button" class="btn btn-secondary" onclick="location.href='${pageContext.request.contextPath}/LoginController'">
             返回登录
         </button>
@@ -55,6 +58,41 @@
     function refreshCaptcha() {
         document.getElementById('captchaImg').src = '${pageContext.request.contextPath}/captcha?' + Math.random();
     }
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        let isValid = true;
+        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+        if (document.getElementById('username').value.trim() === '') {
+            const err = document.getElementById('usernameError');
+            err.textContent = '用户名不能为空';
+            err.style.display = 'block';
+            isValid = false;
+        }
+
+        if (document.getElementById('password').value.trim() === '') {
+            const err = document.getElementById('passwordError');
+            err.textContent = '密码不能为空';
+            err.style.display = 'block';
+            isValid = false;
+        }
+
+        if (document.getElementById('email').value.trim() === '') {
+            const err = document.getElementById('emailError');
+            err.textContent = '邮箱不能为空';
+            err.style.display = 'block';
+            isValid = false;
+        }
+
+        if (document.getElementById('captcha').value.trim() === '') {
+            const err = document.getElementById('captchaError');
+            err.textContent = '验证码不能为空';
+            err.style.display = 'block';
+            isValid = false;
+        }
+
+        if (!isValid) e.preventDefault();
+    });
 </script>
 
 </body>
