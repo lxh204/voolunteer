@@ -34,6 +34,14 @@
             <input type="password" name="password" id="password" class="form-control" placeholder="请输入您的密码" required>
         </div>
 
+        <div class="form-group">
+            <label for="captcha">验证码</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" name="captcha" id="captcha" class="form-control" placeholder="请输入验证码" required style="flex: 1;">
+                <img src="${pageContext.request.contextPath}/captcha" id="captchaImg" alt="验证码" style="height: 40px; cursor: pointer;" onclick="refreshCaptcha()" title="点击刷新验证码">
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">登 入</button>
     </form>
 
@@ -41,6 +49,12 @@
         <p>还没有账号？ <a href="${pageContext.request.contextPath}/RegisterController">立即注册</a></p>
     </div>
 </div>
+
+<script>
+    function refreshCaptcha() {
+        document.getElementById('captchaImg').src = '${pageContext.request.contextPath}/captcha?' + Math.random();
+    }
+</script>
 
 </body>
 </html>
