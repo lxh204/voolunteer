@@ -4,11 +4,20 @@ import model.User;
 import java.sql.*;
 
 public class UserDAO {
+    private static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
+    
     private Connection getConnection() throws SQLException {
+        try {
+            // 加载并注册MySQL JDBC驱动
+            Class.forName(DRIVER_CLASS);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("找不到MySQL JDBC驱动: " + DRIVER_CLASS, e);
+        }
+        
         // TODO: 配置您的数据库连接
         String url = "jdbc:mysql://localhost:3306/volunteer_db";
         String user = "root";
-        String password = "your_password";
+        String password = "root";
         return DriverManager.getConnection(url, user, password);
     }
 

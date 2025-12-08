@@ -1,0 +1,161 @@
+/* * 外部资源标注：
+ * Google Fonts (Roboto 字体)
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* 全局重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* --- 这里修改了背景 --- */
+    /* 使用一张清爽的办公/自然风格背景图 */
+    background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+
+    /* 确保背景铺满屏幕 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* 背景固定，不随滚动条滚动 */
+
+    /* 字体和布局保持不变 */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* 卡片容器通用样式 - 保持不变 */
+.auth-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* 稍微加深了一点阴影，防止背景太花看不清卡片边缘 */
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.auth-container:hover {
+    transform: translateY(-5px);
+}
+
+/* 标题样式 - 保持不变 */
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* 表单组样式 - 保持不变 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+}
+
+/* 输入框样式 - 保持不变 */
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+/* 按钮通用样式 - 保持不变 */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* 主按钮 - 保持不变 */
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* 次要按钮 - 保持不变 */
+.btn-secondary {
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+    margin-top: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+/* 消息提示框 - 保持不变 */
+.alert {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.alert-error {
+    background-color: #fdeaea;
+    color: #e74c3c;
+    border: 1px solid #fadbd8;
+}
+
+.alert-success {
+    background-color: #e8f8f5;
+    color: #27ae60;
+    border: 1px solid #d4efdf;
+}
+
+/* 底部链接区域 - 保持不变 */
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.auth-footer a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
