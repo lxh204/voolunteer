@@ -34,6 +34,14 @@
             <input type="email" name="email" id="email" class="form-control">
         </div>
 
+        <div class="form-group">
+            <label for="captcha">验证码</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" name="captcha" id="captcha" class="form-control" placeholder="请输入验证码" required style="flex: 1;">
+                <img src="${pageContext.request.contextPath}/captcha" id="captchaImg" alt="验证码" style="height: 40px; cursor: pointer;" onclick="refreshCaptcha()" title="点击刷新验证码">
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">注 册</button>
 
         <%-- 返回按钮，使用 type="button" 防止触发表单提交 --%>
@@ -42,6 +50,12 @@
         </button>
     </form>
 </div>
+
+<script>
+    function refreshCaptcha() {
+        document.getElementById('captchaImg').src = '${pageContext.request.contextPath}/captcha?' + Math.random();
+    }
+</script>
 
 </body>
 </html>

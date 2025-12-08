@@ -2,6 +2,7 @@ package Control;
 
 import DAO.UserDAO;
 import model.User;
+import util.CaptchaServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,21 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String captcha = request.getParameter("captcha");
+
+        // 验证码检查
+        HttpSession session = request.getSession();
+        String sessionCaptcha = (String) session.getAttribute(CaptchaServlet.CAPTCHA_KEY);
+        
+        // 移除已使用的验证码
+        session.removeAttribute(CaptchaServlet.CAPTCHA_KEY);
+        
+        // 检查验证码
+        if (captcha == null || sessionCaptcha == null || !captcha.equalsIgnoreCase(sessionCaptcha)) {
+            request.setAttribute("errorMessage", "验证码错误");
+            request.getRequestDispatcher("/Login-Regis/login.jsp").forward(request, response);
+            return;
+        }
 
         // 基本验证
         if (username == null || username.trim().isEmpty() ||
@@ -49,7 +65,6 @@ public class LoginController extends HttpServlet {
 
         if (user != null) {
             // 登录成功，创建session
-            HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
             session.setAttribute("username", user.getUsername());
             session.setAttribute("role", user.getRole());
