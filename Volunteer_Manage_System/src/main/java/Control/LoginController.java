@@ -69,8 +69,15 @@ public class LoginController extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("role", user.getRole());
 
-            // 跳转到主页
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            // 根据用户角色跳转到不同页面
+            String role = user.getRole();
+            if ("admin".equals(role)) {
+                // 管理员跳转到管理员页面
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard.jsp");
+            } else {
+                // 志愿者跳转到志愿者页面
+                response.sendRedirect(request.getContextPath() + "/volunteer/dashboard.jsp");
+            }
         } else {
             // 登录失败
             request.setAttribute("errorMessage", "用户名或密码错误");

@@ -1,5 +1,6 @@
 /* * 外部资源标注：
- * Google Fonts (Roboto 字体)
+ * Google Fonts (Roboto 字体) - 用于提升字体美观度
+ * 如果无法访问外网，可以删除下面这行 @import，系统将回退到默认字体。
  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
@@ -11,17 +12,8 @@
 }
 
 body {
-    /* --- 这里修改了背景 --- */
-    /* 使用一张清爽的办公/自然风格背景图 */
-    background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-
-    /* 确保背景铺满屏幕 */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* 背景固定，不随滚动条滚动 */
-
-    /* 字体和布局保持不变 */
+    /* 页面背景色 */
+    background-color: #f4f7f6;
     font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
@@ -30,12 +22,12 @@ body {
     color: #333;
 }
 
-/* 卡片容器通用样式 - 保持不变 */
+/* 卡片容器通用样式 */
 .auth-container {
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* 稍微加深了一点阴影，防止背景太花看不清卡片边缘 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     transition: transform 0.3s ease;
@@ -45,7 +37,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* 标题样式 - 保持不变 */
+/* 标题样式 */
 h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -53,7 +45,7 @@ h2 {
     font-weight: 700;
 }
 
-/* 表单组样式 - 保持不变 */
+/* 表单组样式 */
 .form-group {
     margin-bottom: 20px;
 }
@@ -66,7 +58,7 @@ h2 {
     color: #666;
 }
 
-/* 输入框样式 - 保持不变 */
+/* 输入框样式 */
 .form-control {
     width: 100%;
     padding: 12px 15px;
@@ -82,7 +74,7 @@ h2 {
     outline: none;
 }
 
-/* 按钮通用样式 - 保持不变 */
+/* 按钮通用样式 */
 .btn {
     width: 100%;
     padding: 12px;
@@ -99,7 +91,7 @@ h2 {
     transform: scale(0.98);
 }
 
-/* 主按钮 - 保持不变 */
+/* 主按钮 (登录/注册) */
 .btn-primary {
     background-color: #3498db;
     color: white;
@@ -109,7 +101,7 @@ h2 {
     background-color: #2980b9;
 }
 
-/* 次要按钮 - 保持不变 */
+/* 次要按钮 (返回) */
 .btn-secondary {
     background-color: #ecf0f1;
     color: #7f8c8d;
@@ -121,7 +113,7 @@ h2 {
     color: #2c3e50;
 }
 
-/* 消息提示框 - 保持不变 */
+/* 消息提示框 */
 .alert {
     padding: 12px;
     border-radius: 8px;
@@ -142,7 +134,7 @@ h2 {
     border: 1px solid #d4efdf;
 }
 
-/* 底部链接区域 - 保持不变 */
+/* 底部链接区域 */
 .auth-footer {
     text-align: center;
     margin-top: 25px;
@@ -158,4 +150,128 @@ h2 {
 
 .auth-footer a:hover {
     text-decoration: underline;
+}
+
+/* 响应式设计 - 适用于移动设备 */
+@media (max-width: 768px) {
+    /* 调整卡片容器大小 */
+    .auth-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+    }
+
+    /* 调整标题大小 */
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    /* 调整表单组间距 */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* 调整输入框大小 */
+    .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    /* 调整按钮大小 */
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* 调整验证码区域布局 */
+    .form-group label {
+        font-size: 13px;
+    }
+
+    /* 调整验证码图片大小 */
+    #captchaImg {
+        height: 35px;
+    }
+
+    /* 调整底部链接样式 */
+    .auth-footer {
+        font-size: 13px;
+    }
+}
+
+/* 响应式设计 - 适用于平板设备 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* 调整卡片容器大小 */
+    .auth-container {
+        width: 80%;
+        max-width: 400px;
+        padding: 25px;
+    }
+
+    /* 调整标题大小 */
+    h2 {
+        font-size: 1.7rem;
+        margin-bottom: 25px;
+    }
+
+    /* 调整输入框大小 */
+    .form-control {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    /* 调整按钮大小 */
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    /* 调整验证码图片大小 */
+    #captchaImg {
+        height: 40px;
+    }
+
+    /* 调整底部链接样式 */
+    .auth-footer {
+        font-size: 14px;
+    }
+}
+
+/* 响应式设计 - 适用于桌面设备 */
+@media (min-width: 1025px) {
+    /* 保持原有设计 */
+    .auth-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+    }
+
+    /* 保持原有标题大小 */
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* 保持原有输入框大小 */
+    .form-control {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    /* 保持原有按钮大小 */
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    /* 保持原有验证码图片大小 */
+    #captchaImg {
+        height: 40px;
+    }
+
+    /* 保持原有底部链接样式 */
+    .auth-footer {
+        font-size: 14px;
+    }
 }
