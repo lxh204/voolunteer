@@ -45,18 +45,19 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- 添加JUnit Jupiter测试依赖 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- 添加MySQL JDBC驱动依赖 -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
-
     </dependencies>
 
     <build>
