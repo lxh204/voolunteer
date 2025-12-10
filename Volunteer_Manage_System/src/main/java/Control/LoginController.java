@@ -67,6 +67,7 @@ public class LoginController extends HttpServlet {
             // 登录成功，创建session
             session.setAttribute("currentUser", user);
             session.setAttribute("username", user.getUsername());
+            session.setAttribute("userId", user.getUserId());
             session.setAttribute("role", user.getRole());
 
             // 根据用户角色跳转到不同页面
@@ -76,7 +77,7 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard.jsp");
             } else {
                 // 志愿者跳转到志愿者页面
-                response.sendRedirect(request.getContextPath() + "/volunteer/dashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "/Volunteer/index.jsp");
             }
         } else {
             // 登录失败
