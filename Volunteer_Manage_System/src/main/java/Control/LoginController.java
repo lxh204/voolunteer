@@ -1,6 +1,7 @@
 package Control;
 
 import DAO.UserDAO;
+import com.mysql.cj.Session;
 import model.User;
 import util.CaptchaServlet;
 
@@ -69,6 +70,8 @@ public class LoginController extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("role", user.getRole());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("password", user.getPassword());
 
             // 根据用户角色跳转到不同页面
             String role = user.getRole();

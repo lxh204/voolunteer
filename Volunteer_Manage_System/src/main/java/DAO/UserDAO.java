@@ -15,7 +15,7 @@ public class UserDAO {
         }
         
         // TODO: 配置您的数据库连接
-        String url = "jdbc:mysql://localhost:3306/volunteer_db";
+        String url = "jdbc:mysql://localhost:3306/volunteermanagesystem";
         String user = "root";
         String password = "root";
         return DriverManager.getConnection(url, user, password);
